@@ -36,11 +36,11 @@ function ExcelToXmlConverter() {
       
       const zip = new JSZip();
       json.forEach((row, index) => {
-        let xml = "<?xml version='1.0' encoding='UTF-8'?>\n<Root>\n";
+        let xml = "<?xml version='1.0' encoding='UTF-8'?>\n<Operacion>\n  <Entidades_Financieras_Alta_Cliente_Persona_Fisica>\n";
         Object.entries(mapping).forEach(([col, tag]) => {
-          xml += `  <${tag}>${row[col]}</${tag}>\n`;
+          xml += `    <${tag}>${row[col]}</${tag}>\n`;
         });
-        xml += "</Root>";
+        xml += "  <Entidades_Financieras_Alta_Cliente_Persona_Fisica>\n</Operacion>";
         zip.file(`row_${index}.xml`, xml);
       });
       
